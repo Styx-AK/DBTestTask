@@ -4,6 +4,9 @@
          xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_4_0.xsd"
          version="4.0">
     <display-name>DB Representation Task</display-name>
+    <welcome-file-list>
+        <welcome-file>/WEB-INF/view/index.jsp</welcome-file>
+    </welcome-file-list>
 
     <servlet>
         <servlet-name>IndexServlet</servlet-name>
@@ -11,10 +14,20 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
-        <url-pattern>/</url-pattern>
+        <url-pattern>/hello</url-pattern>
     </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TryOutServlet</servlet-name>
+        <servlet-class>com.dd.servlets.TryOutServlet</servlet-class>
+    </servlet>
     <servlet-mapping>
-        <servlet-name>default</servlet-name>
-        <url-pattern>/resources/*</url-pattern>
+        <servlet-name>TryOutServlet</servlet-name>
+        <url-pattern>/tryout</url-pattern>
     </servlet-mapping>
+
+    <!--<servlet-mapping>-->
+        <!--<servlet-name>default</servlet-name>-->
+        <!--<url-pattern>/resources/*</url-pattern>-->
+    <!--</servlet-mapping>-->
 </web-app>

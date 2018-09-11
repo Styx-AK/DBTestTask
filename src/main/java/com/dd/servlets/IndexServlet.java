@@ -5,20 +5,17 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
-import java.io.PrintWriter;
 
 public class IndexServlet extends HttpServlet {
     @Override
     protected void doGet(HttpServletRequest req, HttpServletResponse resp) throws ServletException, IOException {
+        //TODO index page with 3 links/buttons/radio(most likely) to 3 other Servlets
+
+        //test
         resp.setContentType("text/html");
+        resp.setStatus(HttpServletResponse.SC_OK);
+        resp.getWriter().println("<h1>Hello Index Servlet</h1>");
+        resp.getWriter().println("session=" + req.getSession(true).getId());
 
-//        PrintWriter writer = resp.getWriter(); //one way
-//        writer.println("TEST1 response");
-//
-//        resp.getWriter().write("TEST2 response"); //or other way
-
-
-        req.getRequestDispatcher("/WEB-INF/view/index.jsp").include(req, resp); //включает в себя логику сервлета
-//        req.getRequestDispatcher("/WEB-INF/view/index.jsp").forward(req, resp); //НЕ включает в себя логику сервлета
     }
 }
