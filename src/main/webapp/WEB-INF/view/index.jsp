@@ -5,9 +5,10 @@
 </head>
 
 <body>
-<h1>Link to IndexServlet</h1>
-<a href="/hello">Hello Index Servlet</a> <br>
-<a href="/tryout">Try Out Servlet</a>
+<h3>Links to Reports</h3>
+<li><a href="/lasthour">Users for the last hour</a></li>
+<li><a href="/incomplete">Users that didn't complete form</a></li>
+<li><a href="/topforms">Top-5 most used forms</a></li>
 
 </body>
 </html>

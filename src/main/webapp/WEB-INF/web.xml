@@ -10,7 +10,7 @@
 
     <servlet>
         <servlet-name>IndexServlet</servlet-name>
-        <servlet-class>com.dd.servlets.IndexServlet</servlet-class>
+        <servlet-class>com.dd.service.IndexServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>IndexServlet</servlet-name>
@@ -19,15 +19,38 @@
 
     <servlet>
         <servlet-name>TryOutServlet</servlet-name>
-        <servlet-class>com.dd.servlets.TryOutServlet</servlet-class>
+        <servlet-class>com.dd.service.TryOutServlet</servlet-class>
     </servlet>
     <servlet-mapping>
         <servlet-name>TryOutServlet</servlet-name>
         <url-pattern>/tryout</url-pattern>
     </servlet-mapping>
 
-    <!--<servlet-mapping>-->
-        <!--<servlet-name>default</servlet-name>-->
-        <!--<url-pattern>/resources/*</url-pattern>-->
-    <!--</servlet-mapping>-->
+    <servlet>
+        <servlet-name>LastHourServlet</servlet-name>
+        <servlet-class>com.dd.service.LastHourServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LastHourServlet</servlet-name>
+        <url-pattern>/lasthour</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>IncompleteFormServlet</servlet-name>
+        <servlet-class>com.dd.service.IncompleteFormServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>IncompleteFormServlet</servlet-name>
+        <url-pattern>/incomplete</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>TopFormsServlet</servlet-name>
+        <servlet-class>com.dd.service.TopFormsServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>TopFormsServlet</servlet-name>
+        <url-pattern>/topforms</url-pattern>
+    </servlet-mapping>
+
 </web-app>

@@ -1,4 +1,4 @@
-package com.dd.servlets;
+package com.dd.service;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
