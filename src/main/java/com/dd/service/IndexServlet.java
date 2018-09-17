@@ -13,6 +13,7 @@ import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.SQLException;
+import java.sql.Statement;
 
 
 public class IndexServlet extends HttpServlet {
@@ -28,10 +29,32 @@ public class IndexServlet extends HttpServlet {
 
         //JDBC test
         JDBCUtil jdbcUtil = new JDBCUtil();
+        Statement statement = null;
+        String sqlCreateTable = "CREATE TABLE test_task_table +(" +
+                "id SERIAL PRIMARY KEY," + // Сквозной ID
+                "ssoid VARCHAR(255) NOT NULL," + // Уникальный идентификатор пользователей
+                "ts NUMERIC(10,0) NOT NULL," + // Время
+                "grp VARCHAR(20) NOT NULL," + // Группа события
+                "type VARCHAR(20) NOT NULL," + // Тип события
+                "subtype VARCHAR(20) NOT NULL," + // Подтип события
+                "url VARCHAR(255)," + // Адрес с которого пришло событие
+                "orgid VARCHAR(20)," + // Организация предоставляющая услугу
+                "formid VARCHAR(20)," + // Идентификатор формы
+                "code VARCHAR(5)," + // код формы(?)
+                "ltpa VARCHAR(20)," + // Ключ сессии (в данном наборе пустой)
+                "sudirresponse VARCHAR(20)," + // Ответ от сервиса авторизации (в данном наборе пустой)
+                "ymdh DATE NOT NULL)"; //Дата в формате YYYY-MM-DD-HH
 
         //подключаемся к БД
         try {
             jdbcUtil.getConnection();
+        } catch (SQLException e) {
+            e.printStackTrace();
+        }
+
+        //Создаем таблицу в БД
+        try {
+             statement = jdbcUtil.getConnection().createStatement();
         } catch (SQLException e) {
             e.printStackTrace();
         }
@@ -48,14 +71,15 @@ public class IndexServlet extends HttpServlet {
 
         try {
             copyManager.copyIn("COPY test_task_table from STDIN with delimiter as ';'", fileReader);
-
             resp.getWriter().println("<h4>Coping data from CSV to DB was successful</h4>");
         } catch (SQLException e) {
             e.printStackTrace();
             resp.getWriter().println("<h4>Ops! Something went wrong...</h4>");
         }
 
-        //TODO создать таблицу с полями заранее и только после этого загрухать в нее данные из CSV.
+        //TODO создать таблицу с полями заранее и только после этого загружать в нее данные из CSV.
+
+
 
 
 
