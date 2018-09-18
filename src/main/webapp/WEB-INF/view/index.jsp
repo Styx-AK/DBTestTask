@@ -9,6 +9,7 @@
 </head>
 
 <body>
+<li><a href="/hello">Create table</a></li>
 <h3>Links to Reports</h3>
 <li><a href="/lasthour">Users for the last hour</a></li>
 <li><a href="/incomplete">Users that didn't complete form</a></li>
