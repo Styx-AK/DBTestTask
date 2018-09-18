@@ -2,14 +2,11 @@ package com.dd.service;
 
 import com.dd.utils.JDBCUtil;
 import org.postgresql.copy.CopyManager;
-import org.postgresql.core.BaseConnection;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.io.File;
-import java.io.FileReader;
 import java.io.IOException;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -45,6 +42,9 @@ public class IndexServlet extends HttpServlet {
                 "sudirresponse VARCHAR(25), " + // Ответ от сервиса авторизации (в данном наборе пустой)
                 "ymdh VARCHAR(13) NOT NULL)"; //Дата в формате YYYY-MM-DD-HH
 
+        String sqlCopy = "COPY test_task_table FROM 'C:\\Users\\Tom\\IdeaProjects\\DBTestTask\\src\\main\\resources\\test_case.csv' WITH(FORMAT CSV, HEADER true, delimiter ';');";
+        // \copy не работает!!!
+
         try {
             //подключаемся к БД
             System.out.println("Creating connection to database...");
@@ -57,16 +57,17 @@ public class IndexServlet extends HttpServlet {
             statement = jdbcUtil.getMyConnection().createStatement();
             statement.executeUpdate(sqlCreateTable);
 
-            resp.getWriter().println("<h4>Table have been created in the DB successfully</h4>");
-            System.out.println("Table have been created in the DB successfully");
+            resp.getWriter().println("<h4>Table was successfully created in DB");
+            System.out.println("Table was successfully created in DB.");
 
             //копируем данные из csv файла
 
-            //через командную строку получилось скопировать данные из CSV в таблицу данной командой:
+            //TODO через командную строку получилось скопировать данные из CSV в таблицу данной командой:
             // \copy test_task_table FROM 'C:\Users\Tom\Downloads\test_case.csv' WITH(FORMAT CSV, HEADER true, delimiter ';');
 
+            System.out.println("Coping data from CSV file to the table...");
+            statement.executeUpdate(sqlCopy);
 
-//            System.out.println("Coping data from CSV file to the table...");
 //            copyManager = new CopyManager((BaseConnection) jdbcUtil.getMyConnection());
 //
 //            FileReader fileReader = new FileReader(new File("src/main/resources/test_case.csv"));
@@ -83,8 +84,8 @@ public class IndexServlet extends HttpServlet {
 
         } catch (SQLException e) {
             e.printStackTrace();
-            resp.getWriter().println("<h4>Ops! Something went wrong...with table creating.</h4>");
-            System.out.println("Ops! Something went wrong...with table creating.");
+            resp.getWriter().println("<h4>Ops! Something went wrong...</h4>");
+            System.out.println("Ops! Something went wrong....");
         }
 
 
