@@ -4,12 +4,15 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>DB Representation</title>
+    <title>Links to Reports</title>
     <%--<link rel="stylesheet" href="css/bootstrap.min.css"/>--%>
 </head>
 
 <body>
-<p>Create table and import data from CSV file to that table</p>
-<a href="/reports">Do it!</a>
+<h3>Links to Reports:</h3>
+<li><a href="/lasthour">Users for the last hour</a></li>
+<li><a href="/incomplete">Users that didn't complete form</a></li>
+<li><a href="/topforms">Top-5 most used forms</a></li>
+
 </body>
 </html>
