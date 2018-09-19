@@ -5,20 +5,33 @@
 <html>
 <head>
     <meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
-    <title>DB Representation</title>
-    <%--<link rel="stylesheet" href="css/bootstrap.min.css"/>--%>
+    <title>Top 5 forms</title>
+    <style>
+        table, th, td {
+            border: 1px solid black;
+            border-collapse: collapse;
+        }
+        th, td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
 </head>
 
 <body>
-<table>
+<h3>Top 5 most commonly used forms</h3>
+<table style="width:50%">
     <tr>
-        <th>id</th>
-    </tr>
-    <c:forEach items="${formids}" var="id">
+        <th>Top</th>
+        <th>Form</th>
+        <c:set var="count" value="0"/>
+        <c:forEach items="${formids}" var="id">
+            <c:set var="count" value="${count + 1}"/>
         <tr>
+            <td>${count}</td>
             <td>${id}</td>
         </tr>
-    </c:forEach>
+        </c:forEach>
 </table>
 </body>
 </html>
