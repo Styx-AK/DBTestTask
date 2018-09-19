@@ -14,6 +14,15 @@
     </servlet>
     <servlet-mapping>
         <servlet-name>CreateCopyServlet</servlet-name>
+        <url-pattern>/cc</url-pattern>
+    </servlet-mapping>
+
+    <servlet>
+        <servlet-name>LinkReportServlet</servlet-name>
+        <servlet-class>com.dd.service.LinkReportServlet</servlet-class>
+    </servlet>
+    <servlet-mapping>
+        <servlet-name>LinkReportServlet</servlet-name>
         <url-pattern>/reports</url-pattern>
     </servlet-mapping>
 
